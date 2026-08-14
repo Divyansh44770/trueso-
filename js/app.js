@@ -10,23 +10,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. INJECT GLOBAL SYSTEMS
   injectGlobalSystems();
 
-  // 2. SETUP NAVIGATION & OVERLAY
+  // 2. EN / HINDI TRANSLATION TOGGLE — must run before initPreloader():
+  // the typewriter animation measures the preloader title's rendered
+  // width, so the correct language needs to already be in place first.
+  initTranslateToggle();
+
+  // 3. SETUP NAVIGATION & OVERLAY
   initNavigation();
 
-  // 3. SETUP CUSTOM CURSOR
+  // 4. SETUP CUSTOM CURSOR
   initCustomCursor();
 
-  // 4. RUN PRELOADER AND INITIATE SCROLL TRIGGERS
+  // 5. RUN PRELOADER AND INITIATE SCROLL TRIGGERS
   initPreloader();
 
-  // 5. GOLD DUST HERO CANVAS
+  // 6. GOLD DUST HERO CANVAS
   initGoldDustCanvas();
 
-  // 6. TESTIMONIAL SPOTLIGHT
+  // 7. TESTIMONIAL SPOTLIGHT
   initTestimonialSpotlight();
-
-  // 7. EN / HINDI TRANSLATION TOGGLE
-  initTranslateToggle();
 });
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -515,11 +517,15 @@ function initPreloader() {
     // but an inline overflow on <body> breaks position:sticky for the nav — that
     // was the real cause of the nav failing to stick on every page.)
 
-    // Title typewriter simulation
+    // Title typewriter simulation. Animate to the text's own measured
+    // width (scrollWidth reflects the full unclipped content even while
+    // the element is still width:0 + overflow:hidden) rather than a
+    // guessed "100%" of the container — that guess was wrong at the
+    // default font-size and clipped the name mid-word on real screens.
     const titleText = document.getElementById("preloader-typewriter");
     if (titleText) {
       tl.to(titleText, {
-        width: "100%",
+        width: titleText.scrollWidth,
         duration: 0.9,
         ease: "steps(18)",
         delay: 0.1

@@ -163,10 +163,11 @@ body.cursor-hovering .custom-cursor-ring {
 
 .preloader-content {
   text-align: center;
-  /* Fixed (not auto) width so the typewriter title's animated "100%"
-     resolves against a stable value instead of shrink-to-fit sizing —
-     without this, the title can end up wider than the viewport on phones. */
-  width: min(92vw, 480px);
+  /* No fixed width: the typewriter animation (js/app.js) now targets
+     the title's own measured scrollWidth in px, not a percentage of
+     this container, so the container is free to hug its content —
+     max-width is just a safety net against extreme/zoomed viewports. */
+  max-width: 94vw;
   padding: 0 0.5rem;
 }
 
@@ -187,7 +188,6 @@ body.cursor-hovering .custom-cursor-ring {
   white-space: nowrap;
   border-right: 1px solid var(--antique-gold);
   width: 0;
-  max-width: 100%;
   margin: 0 auto;
 }
 
