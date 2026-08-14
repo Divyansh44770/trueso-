@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Press & Media Campaigns · Trueso Varanasi · Since 1910</title>
+  <meta name="description" content="View the media chronicles, print campaigns, and visual advertisements of Kanhaiya Lal Saraf Jewellers (Trueso) Varanasi.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ============================================= */
+    /* PRESS BENTO TWO-COLUMN LAYOUT (NO OVERLAPS) */
+    /* ============================================= */
+    .press-bento-layout {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .press-col-left {
+      grid-column: span 5;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .press-col-right {
+      grid-column: span 7;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    @media (max-width: 991px) {
+      .press-col-left, .press-col-right {
+        grid-column: span 12;
+      }
+    }
+
+    .press-image-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      background-color: var(--ivory-ledger);
+      cursor: zoom-in;
+      transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .press-image-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--antique-gold);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+    }
+
+    .press-image-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .press-image-card:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Lightbox Modal */
+    .press-lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background-color: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .press-lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-content-wrapper {
+      position: relative;
+      max-width: 90%;
+      max-height: 85%;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--antique-gold);
+      background-color: var(--ink-charcoal);
+      padding: 10px;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 75vh;
+      display: block;
+      object-fit: contain;
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: -45px;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--ivory-ledger);
+      font-size: 1.5rem;
+      cursor: pointer;
+      font-family: var(--font-ledger);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .lightbox-close-btn:hover {
+      color: var(--antique-gold);
+    }
+
+    .lightbox-info-strip {
+      padding: 15px 10px 5px;
+      color: var(--ivory-ledger);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lightbox-info-sub {
+      font-family: var(--font-ledger);
+      font-size: 0.75rem;
+      color: var(--antique-gold);
+      letter-spacing: 0.1em;
+    }
+
+    .lightbox-whatsapp-btn {
+      background-color: var(--oxblood);
+      color: var(--ivory-ledger);
+      border: 1px solid var(--antique-gold);
+      font-family: var(--font-ledger);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 15px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .lightbox-whatsapp-btn:hover {
+      background-color: var(--ivory-ledger);
+      color: var(--oxblood);
+    }
+  </style>
+
+  <!-- Bootstrap 5 JavaScript Bundle (Required for Dropdowns & Carousels) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+  <!-- GSAP & ScrollTrigger Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <!-- Main Application Script -->
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <!-- Preloader Placeholder -->
+  <div id="preloader-placeholder"></div>
+
+  <!-- Header Placeholder -->
+  <header id="header-placeholder"></header>
+
+  <!-- LED Gold Rate Ticker Placeholder -->
+  <div id="ticker-placeholder"></div>
+
+  <main class="py-6 gold-collection-page">
+    <div class="container">
+      
+      <!-- Breadcrumbs Section -->
+      <nav aria-label="breadcrumb" class="mb-5">
+        <ol class="breadcrumb ledger-text">
+          <li class="breadcrumb-item"><a href="index.html" class="text-muted text-decoration-none" data-i18n="nav.home">Home</a></li>
+          <li class="breadcrumb-item active text-oxblood" aria-current="page" data-i18n="pressPage.breadcrumb">Press Archives</li>
+        </ol>
+      </nav>
+
+      <!-- Page Hero Header -->
+      <div class="text-center mb-5 reveal-fade-up">
+        <span class="eyebrow text-gold mb-3 d-inline-block" data-i18n="pressPage.kicker">Trueso chronicles</span>
+        <h1 class="display-4 text-serif text-dark mb-3" style="font-weight: 300;" data-i18n="pressPage.title">Media & Press Archives</h1>
+        <p class="Lora text-muted lead mx-auto mb-0" style="max-width: 680px; line-height: 1.8; font-size: 1.1rem;" data-i18n="pressPage.desc">
+          An archival showcase of Kanhaiya Lal Saraf Jewellers' (Trueso) official advertising campaigns, print promotions, and public announcements designed across our legacy.
+        </p>
+      </div>
+
+      <!-- Bento-style Two-Column Layout (Original Aspect Ratios, No Cropping, No Cards) -->
+      <section class="mb-6">
+        <div class="press-bento-layout">
+          
+          <!-- Left Column (Portrait Images) -->
+          <div class="press-col-left reveal-fade-up">
+            
+            <!-- Ad 2 (Portrait, Last Day) -->
+            <div class="press-image-card" onclick="openLightbox('../images/press_ad_2.png', 'Traditional Craftsmanship Showcase', 'Print Ad · Bridal Collection')">
+              <img src="images/press_ad_2.png" alt="Varanasi Craftsmanship Showcase 50% Off">
+            </div>
+
+            <!-- Ad 4 (Portrait, Last Two Days) -->
+            <div class="press-image-card" onclick="openLightbox('../images/press_ad_4.png', 'Legacy Bridal Campaign', 'Print Ad · Heritage Range')">
+              <img src="images/press_ad_4.png" alt="Trueso Legacy Bridal Campaign">
+            </div>
+
+          </div>
+
+          <!-- Right Column (Landscape Images) -->
+          <div class="press-col-right reveal-fade-up">
+            
+            <!-- Ad 1 (Landscape, Last Day) -->
+            <div class="press-image-card" onclick="openLightbox('../images/press_ad_1.png', 'The Trueso Invitation (Last Day)', 'Print Ad · 50% Off Making')">
+              <img src="images/press_ad_1.png" alt="The Trueso Invitation Last Day">
+            </div>
+
+            <!-- Ad 3 (Landscape, Last Two Days) -->
+            <div class="press-image-card" onclick="openLightbox('../images/press_ad_3.png', 'The Trueso Invitation (Last Two Days)', 'Print Ad · Old Gold Exchange')">
+              <img src="images/press_ad_3.png" alt="The Trueso Invitation Last Two Days">
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Private Showroom Reservation -->
+      <section class="py-5 border-top border-light-subtle mb-6 text-center reveal-fade-up">
+        <span class="eyebrow text-oxblood" data-i18n="pressPage.visitShowrooms">Visit Showrooms</span>
+        <h2 class="mb-3" data-i18n="pressPage.experienceTitle">Experience Ornaments in Person</h2>
+        <p class="Lora text-muted mx-auto mb-4" style="max-width: 580px;" data-i18n="pressPage.experienceDesc">Schedule a private showroom viewing with our relationship managers at Sigra or Godowlia.</p>
+        <a href="contact-us.html" class="btn-trueso text-decoration-none" data-i18n="pressPage.reserveBtn">Reserve a Private Viewing</a>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Lightbox Overlay Modal -->
+  <div class="press-lightbox-modal" id="pressLightbox" onclick="closeLightboxModal(event)">
+    <div class="lightbox-content-wrapper" onclick="event.stopPropagation()">
+      <button class="lightbox-close-btn" onclick="closeLightbox()"><span data-i18n="pressPage.close">Close</span> ×</button>
+      <img src="" alt="" class="lightbox-img" id="lightboxImage">
+      <div class="lightbox-info-strip">
+        <div>
+          <span id="lightboxTitle" class="d-block" style="font-size: 1.15rem; font-family: var(--font-display);">Campaign Title</span>
+          <span class="lightbox-info-sub" id="lightboxMeta">Print Ad</span>
+        </div>
+        <div>
+          <a href="#" class="lightbox-whatsapp-btn" id="lightboxWhatsappLink" target="_blank">
+            <i class="fab fa-whatsapp me-2"></i><span data-i18n="product.inquireWhatsapp">Inquire on WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <footer id="footer-placeholder"></footer>
+
+  <!-- Lightbox and WhatsApp Interactivity Script -->
+  <script>
+    // Lightbox Control Functions
+    const modal = document.getElementById("pressLightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxTitle = document.getElementById("lightboxTitle");
+    const lightboxMeta = document.getElementById("lightboxMeta");
+    const lightboxWhatsappLink = document.getElementById("lightboxWhatsappLink");
+
+    function openLightbox(imgSrc, titleText, metaText) {
+      lightboxImage.src = imgSrc;
+      lightboxTitle.innerText = titleText;
+      lightboxMeta.innerText = metaText;
+      
+      // WhatsApp Campaign Inquiry prefill message
+      const messageText = `Hello Trueso Varanasi, I am inquiring about this media campaign/advertisement from your Press Archives page:\n\n*Campaign:* ${titleText}\n\nPlease share current validity and related jewellery details. Thank you!`;
+      lightboxWhatsappLink.href = `https://wa.me/919044032100?text=${encodeURIComponent(messageText)}`;
+      
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden"; // Prevent page scrolling
+    }
+
+    function closeLightbox() {
+      modal.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    function closeLightboxModal(event) {
+      if (event.target === modal) {
+        closeLightbox();
+      }
+    }
+
+    // Escape Key Close Support
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("active")) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>

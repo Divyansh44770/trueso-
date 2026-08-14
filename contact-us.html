@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us · Trueso Varanasi · Showrooms & Inquiries</title>
+  <meta name="description" content="Get in touch with Kanhaiya Lal Saraf Jewellers (Trueso) in Varanasi. Direct contacts, operational hours, coordinate maps and inquiry forms for Sigra and Godowlia showrooms.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ============================================= */
+    /* SPLIT SCREEN CONTACT US PAGE STYLING */
+    /* ============================================= */
+    .contact-split-container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .contact-panel-left {
+      grid-column: span 5;
+      position: sticky;
+      top: 100px;
+    }
+
+    .contact-panel-right {
+      grid-column: span 7;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 991px) {
+      .contact-panel-left, .contact-panel-right {
+        grid-column: span 12;
+      }
+      .contact-panel-left {
+        position: static;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .showroom-block {
+      background-color: var(--ivory-ledger);
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      padding: 2rem;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .showroom-block:hover {
+      border-color: var(--antique-gold);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.08);
+    }
+
+    .map-container {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      margin: 1.25rem 0;
+      background-color: var(--ivory-dark);
+    }
+
+    .map-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: sepia(0.2) contrast(1.05) brightness(0.95);
+      transition: filter 0.4s ease;
+    }
+
+    .map-iframe:hover {
+      filter: none;
+    }
+
+    .contact-touchpoint-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 1.5rem 0 2.5rem 0;
+      border-top: 1px solid rgba(18, 18, 18, 0.06);
+      border-bottom: 1px solid rgba(18, 18, 18, 0.06);
+      padding: 1.25rem 0;
+    }
+
+    .contact-touchpoint-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      font-size: 0.88rem;
+    }
+
+    .contact-touchpoint-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-touchpoint-item i {
+      color: var(--antique-gold);
+      width: 22px;
+      font-size: 0.95rem;
+    }
+
+    .contact-touchpoint-item a {
+      color: var(--oxblood);
+      text-decoration: none;
+    }
+
+    .contact-touchpoint-item a:hover {
+      color: var(--antique-gold);
+    }
+
+    /* Success Message State */
+    .success-container {
+      display: none;
+      opacity: 0;
+      text-align: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .success-seal {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 1.5rem;
+      background: var(--oxblood);
+      border: 2px solid var(--antique-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ivory-ledger);
+      font-size: 1.75rem;
+      box-shadow: 0 10px 25px rgba(128, 0, 32, 0.2);
+      animation: seal-pulse 2s infinite alternate;
+    }
+
+    @keyframes seal-pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+  </style>
+
+  <!-- Bootstrap 5 JavaScript Bundle (Required for Dropdowns & Carousels) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+  <!-- GSAP & ScrollTrigger Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <!-- Main Application Script -->
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <!-- Preloader Placeholder -->
+  <div id="preloader-placeholder"></div>
+
+  <!-- Header Placeholder -->
+  <header id="header-placeholder"></header>
+
+  <!-- LED Gold Rate Ticker Placeholder -->
+  <div id="ticker-placeholder"></div>
+
+  <main class="py-6 gold-collection-page">
+    <div class="container">
+      
+      <!-- Breadcrumbs -->
+      <nav aria-label="breadcrumb" class="mb-5">
+        <ol class="breadcrumb ledger-text">
+          <li class="breadcrumb-item"><a href="index.html" class="text-muted text-decoration-none" data-i18n="nav.home">Home</a></li>
+          <li class="breadcrumb-item active text-oxblood" aria-current="page" data-i18n="nav.contact">Contact Us</li>
+        </ol>
+      </nav>
+
+      <!-- Main Split Layout Grid -->
+      <div class="contact-split-container">
+
+        <!-- Left Panel: Form & Contacts -->
+        <div class="contact-panel-left reveal-fade-up">
+          <span class="eyebrow text-gold mb-2 d-block" data-i18n="contactPage.kicker">Varanasi Directory</span>
+          <h1 class="text-serif text-dark mb-3" style="font-weight: 300; font-size: 2.75rem;" data-i18n="contactPage.title">Get in Touch</h1>
+          <p class="Lora text-muted" style="line-height: 1.7; font-size: 0.95rem;" data-i18n="contactPage.desc">
+            Whether seeking custom nakashi design consultations or daily bullion valuations, our showroom staff stands ready to assist you.
+          </p>
+
+          <!-- Quick Touchpoints -->
+          <ul class="contact-touchpoint-list">
+            <li class="contact-touchpoint-item">
+              <i class="fas fa-phone-alt"></i>
+              <span class="text-muted me-2" data-i18n="contactPage.sigraLabel">Sigra:</span>
+              <a href="tel:05422221011">0542 222 1011</a>
+            </li>
+            <li class="contact-touchpoint-item">
+              <i class="fas fa-phone-alt"></i>
+              <span class="text-muted me-2" data-i18n="contactPage.godowliaLabel">Godowlia:</span>
+              <a href="tel:05422391010">0542 239 1010</a>
+            </li>
+            <li class="contact-touchpoint-item">
+              <i class="fab fa-whatsapp"></i>
+              <span class="text-muted me-2" data-i18n="contactPage.whatsappLabel">WhatsApp:</span>
+              <a href="https://wa.me/919044032100" target="_blank">+91 90440 32100</a>
+            </li>
+            <li class="contact-touchpoint-item">
+              <i class="fas fa-envelope"></i>
+              <span class="text-muted me-2" data-i18n="contactPage.emailLabel">Email:</span>
+              <a href="mailto:trueso_klsj@yahoo.com">trueso_klsj@yahoo.com</a>
+            </li>
+          </ul>
+
+          <!-- Form Wrap -->
+          <div class="ledger-form" id="formWrapper" style="padding: 2rem;">
+            <span class="eyebrow text-oxblood mb-2 d-block" data-i18n="contactPage.formKicker">Inquiry Form</span>
+            <h2 class="h4 mb-4" style="font-family: var(--font-display); font-weight: 500;" data-i18n="contactPage.formTitle">Send a Message</h2>
+
+            <form id="contact-ledger-form" onsubmit="handleContactSubmit(event)">
+              <div class="mb-3">
+                <div class="ledger-input-group">
+                  <label class="ledger-label" for="contact-name" data-i18n="contactPage.nameLabel">Customer Name</label>
+                  <input type="text" id="contact-name" class="ledger-input" required placeholder="Enter full name...">
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="ledger-input-group">
+                  <label class="ledger-label" for="contact-phone" data-i18n="contactPage.phoneLabel">Contact Number</label>
+                  <input type="tel" id="contact-phone" class="ledger-input" required placeholder="Enter phone number...">
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <div class="ledger-input-group">
+                  <label class="ledger-label" for="contact-message" data-i18n="contactPage.messageLabel">Inquiry Details</label>
+                  <textarea id="contact-message" class="ledger-input" rows="3" required placeholder="Describe ornament types or services required..."></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="wax-seal-btn w-100 text-center" data-i18n="contactPage.submitBtn">Seal & Submit</button>
+            </form>
+          </div>
+
+          <!-- Success Message Wrap -->
+          <div class="success-container ledger-form" id="successContainer">
+            <div class="success-seal">
+              <i class="fas fa-scroll"></i>
+            </div>
+            <h3 class="text-serif text-dark mb-2" data-i18n="contactPage.successTitle">Message Logged</h3>
+            <p class="Lora text-muted mb-4" style="line-height: 1.7; font-size: 0.9rem;" data-i18n="contactPage.successDesc">
+              Your message has been sealed and logged in our Varanasi showroom registry. An officer will get back to you shortly.
+            </p>
+            <button class="btn-trueso btn-sm" onclick="resetFormState()" data-i18n="contactPage.anotherInquiry">Submit Another Inquiry</button>
+          </div>
+
+        </div>
+
+        <!-- Right Panel: Showrooms & Google Maps -->
+        <div class="contact-panel-right reveal-fade-up">
+          
+          <!-- Showroom 1: Sigra -->
+          <div class="showroom-block">
+            <span class="eyebrow text-gold mb-2 d-block" data-i18n="contactPage.flagship">Flagship Showroom</span>
+            <h2 class="text-serif text-dark h3 mb-3" style="font-weight: 400;" data-i18n="footer.sigra">Sigra Outlet</h2>
+
+            <p class="Lora text-muted mb-2" style="font-size: 0.92rem; line-height: 1.7;">
+              📍 <span data-i18n="contactPage.sigraAddr">Shakti Shikha Apartment, 1st Floor, Sigra Road, Opposite Saheed Udyan, Varanasi, UP 221001</span>
+            </p>
+            <p class="ledger-text text-muted mb-0" style="font-size: 0.8rem; letter-spacing: 0.05em;" data-i18n="contactPage.sigraHours">
+              OPEN DAILY: 10:00 AM – 8:00 PM  ·  TEL: 0542 222 1011
+            </p>
+
+            <!-- Map -->
+            <div class="map-container">
+              <iframe
+                class="map-iframe"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.7725965415783!2d82.98634867623912!3d25.311910626359553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2de26efcc0bf%3A0xc3cf338872584cfb!2sKanhaiya%20Lal%20Saraf%20Jewellers%20(Trueso)!5e0!3m2!1sen!2sin!4v1700000000000"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Kanhaiya+Lal+Saraf+Jewellers+Sigra+Varanasi" target="_blank" class="btn-trueso w-100 text-center text-decoration-none btn-sm">
+              <i class="fas fa-directions me-2"></i><span data-i18n="contactPage.getDirections">Get Directions via Google Maps</span>
+            </a>
+          </div>
+
+          <!-- Showroom 2: Godowlia -->
+          <div class="showroom-block">
+            <span class="eyebrow text-gold mb-2 d-block" data-i18n="contactPage.heritage">Heritage Showroom</span>
+            <h2 class="text-serif text-dark h3 mb-3" style="font-weight: 400;" data-i18n="footer.godowlia">Godowlia Outlet</h2>
+
+            <p class="Lora text-muted mb-2" style="font-size: 0.92rem; line-height: 1.7;">
+              📍 <span data-i18n="contactPage.godowliaAddr">D 37/47, 47A, 47A-1, Below Hotel Ganges Grand, Godowlia Crossing, Varanasi, UP 221001</span>
+            </p>
+            <p class="ledger-text text-muted mb-0" style="font-size: 0.8rem; letter-spacing: 0.05em;" data-i18n="contactPage.godowliaHours">
+              OPEN DAILY: 10:00 AM – 8:00 PM  ·  TEL: 0542 239 1010
+            </p>
+
+            <!-- Map -->
+            <div class="map-container">
+              <iframe
+                class="map-iframe"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3606.9189332212975!2d83.0041285762389!3d25.30713782655523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2e21245037d7%3A0xe10ad5428a1ea567!2sKanhaiya%20Lal%20Saraf%20Jewellers!5e0!3m2!1sen!2sin!4v1700000000000"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Kanhaiya+Lal+Saraf+Jewellers+Godowlia+Varanasi" target="_blank" class="btn-trueso w-100 text-center text-decoration-none btn-sm">
+              <i class="fas fa-directions me-2"></i><span data-i18n="contactPage.getDirections">Get Directions via Google Maps</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer Placeholder -->
+  <footer id="footer-placeholder"></footer>
+
+  <script>
+    // Handle Form Submission with GSAP animations
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      
+      const formWrapper = document.getElementById("formWrapper");
+      const successContainer = document.getElementById("successContainer");
+      
+      // GSAP animate out form
+      gsap.to(formWrapper, {
+        opacity: 0,
+        y: -20,
+        duration: 0.5,
+        onComplete: () => {
+          formWrapper.style.display = "none";
+          successContainer.style.display = "block";
+          
+          // GSAP animate in success message
+          gsap.to(successContainer, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out"
+          });
+        }
+      });
+    }
+
+    // Reset Form to Submit Another Inquiry
+    function resetFormState() {
+      const formWrapper = document.getElementById("formWrapper");
+      const successContainer = document.getElementById("successContainer");
+      const form = document.getElementById("contact-ledger-form");
+      
+      form.reset();
+      
+      gsap.to(successContainer, {
+        opacity: 0,
+        y: 20,
+        duration: 0.4,
+        onComplete: () => {
+          successContainer.style.display = "none";
+          formWrapper.style.display = "block";
+          
+          gsap.to(formWrapper, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out"
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

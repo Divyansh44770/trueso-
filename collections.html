@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Collections · Trueso · BIS Hallmarked Gold, Diamonds, Antique & Silver</title>
+  <meta name="description" content="Explore Trueso's five premium categories of jewellery in Varanasi. Every collection (Gold, Diamond, Antique, Silver, Gems) is 100% hallmarked and certified.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Bootstrap 5 JavaScript Bundle (Required for Dropdowns & Carousels) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+  <!-- GSAP & ScrollTrigger Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <!-- Main Application Script -->
+  <script src="js/app.js" defer></script>
+  <!-- Collections Module Script -->
+  <script src="js/collections.js" defer></script>
+</head>
+<body>
+
+  <!-- Preloader Placeholder -->
+  <div id="preloader-placeholder"></div>
+
+  <!-- Header Placeholder -->
+  <header id="header-placeholder"></header>
+
+  <!-- LED Gold Rate Ticker Placeholder -->
+  <div id="ticker-placeholder"></div>
+
+  <main class="py-5">
+    <div class="container">
+      <!-- Breadcrumbs -->
+      <nav aria-label="breadcrumb" class="mb-5">
+        <ol class="breadcrumb ledger-text">
+          <li class="breadcrumb-item"><a href="index.html" class="text-muted text-decoration-none" data-i18n="nav.home">Home</a></li>
+          <li class="breadcrumb-item active text-oxblood" aria-current="page" data-i18n="nav.collections">Collections</li>
+        </ol>
+      </nav>
+
+      <!-- Page Title -->
+      <div class="row align-items-center mb-5 pb-5">
+        <div class="col-lg-6">
+          <span class="eyebrow" data-i18n="collections.hero.kicker">Curated Worlds</span>
+          <h1 class="mb-3" data-i18n="home.collections.title">Our Collections</h1>
+          <p class="Lora text-muted lead mb-0" style="font-size: 1.1rem;" data-i18n="collections.hero.desc">
+            Five curated worlds of jewellery, each hallmarked and certified. Select a vault below to view our specific catalog frames.
+          </p>
+        </div>
+        <div class="col-lg-6 mt-4 mt-lg-0">
+          <div class="frame-placeholder cursor-hover-trigger w-100" style="aspect-ratio: 16/9; padding: 0;">
+            <div class="frame-placeholder-corners"></div>
+            <img src="images/hero_collections.png" alt="Trueso Collections Showcase" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" style="z-index: 1;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Collections Grid -->
+      <div class="text-center mb-5">
+        <span class="eyebrow text-oxblood" data-i18n="collections.grid.kicker">Five Vaults</span>
+        <h2 data-i18n="collections.grid.title">Explore Our Vaults</h2>
+      </div>
+
+      <div class="collections-hub-grid">
+        <!-- Gold -->
+        <a href="gold-jewellery.html" class="vault-card" data-hub-id="gold">
+          <div class="vault-img-wrapper">
+            <img src="images/gold_collection_cover.jpg" alt="Gold Jewellery" class="vault-img">
+          </div>
+          <div class="vault-content">
+            <span class="eyebrow" data-i18n="collections.vault1.label">VAULT I · GOLD</span>
+            <h3 class="collection-card-title h3 mb-3" data-i18n="home.bento.goldTitle">Gold Jewellery</h3>
+            <p class="Lora text-muted small" data-i18n="collections.vault1.desc">From Sagai to Vidai, gold serves to adorn woman like nothing else. 100% BIS Hallmarked.</p>
+            <div class="ledger-text text-oxblood small mt-4" data-i18n="collections.discover">Discover Vault →</div>
+          </div>
+        </a>
+
+        <!-- Diamond -->
+        <a href="diamond-jewellery.html" class="vault-card" data-hub-id="diamond">
+          <div class="vault-img-wrapper">
+            <img src="images/diamond_hero.jpg" alt="Diamond Jewellery" class="vault-img">
+          </div>
+          <div class="vault-content">
+            <span class="eyebrow" data-i18n="collections.vault2.label">VAULT II · DIAMONDS</span>
+            <h3 class="collection-card-title h3 mb-3" data-i18n="home.bento.diamondTitle">Diamond Jewellery</h3>
+            <p class="Lora text-muted small" data-i18n="collections.vault2.desc">Innovation and unblemished heritage merging into stellar designs. Certified and graded.</p>
+            <div class="ledger-text text-oxblood small mt-4" data-i18n="collections.discover">Discover Vault →</div>
+          </div>
+        </a>
+
+        <!-- Antique -->
+        <a href="antique-jewellery.html" class="vault-card" data-hub-id="antique">
+          <div class="vault-img-wrapper">
+            <img src="images/antique_hero.jpg" alt="Antique Jewellery" class="vault-img">
+          </div>
+          <div class="vault-content">
+            <span class="eyebrow" data-i18n="collections.vault3.label">VAULT III · HERITAGE</span>
+            <h3 class="collection-card-title h3 mb-3" data-i18n="home.bento.antiqueTitle">Antique Jewellery</h3>
+            <p class="Lora text-muted small" data-i18n="collections.vault3.desc">An eclectic mix of beauty, opulence, heritage, and meaning passed down generations.</p>
+            <div class="ledger-text text-oxblood small mt-4" data-i18n="collections.discover">Discover Vault →</div>
+          </div>
+        </a>
+
+        <!-- Silver -->
+        <a href="silver-jewellery.html" class="vault-card" data-hub-id="silver">
+          <div class="vault-img-wrapper">
+            <img src="images/silver_hero.jpg" alt="Silver Jewellery" class="vault-img">
+          </div>
+          <div class="vault-content">
+            <span class="eyebrow" data-i18n="collections.vault4.label">VAULT IV · STERLING</span>
+            <h3 class="collection-card-title h3 mb-3" data-i18n="home.bento.silverTitle">Silver Jewellery</h3>
+            <p class="Lora text-muted small" data-i18n="collections.vault4.desc">Affordable luxury dating back to 3000 BC. Utensils, idols, temples, and fine pieces.</p>
+            <div class="ledger-text text-oxblood small mt-4" data-i18n="collections.discover">Discover Vault →</div>
+          </div>
+        </a>
+
+        <!-- Gems -->
+        <a href="gems-jewellery.html" class="vault-card" data-hub-id="gems">
+          <div class="vault-img-wrapper">
+            <img src="images/gems_hero.jpg" alt="Gems Jewellery" class="vault-img">
+          </div>
+          <div class="vault-content">
+            <span class="eyebrow" data-i18n="collections.vault5.label">VAULT V · ASTROLOGY</span>
+            <h3 class="collection-card-title h3 mb-3" data-i18n="collections.vault5.title">Gems Jewellery</h3>
+            <p class="Lora text-muted small" data-i18n="collections.vault5.desc">Bespoke astrological and fine gemstone settings offering pure certified natural glow.</p>
+            <div class="ledger-text text-oxblood small mt-4" data-i18n="collections.discover">Discover Vault →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Placeholder -->
+  <footer id="footer-placeholder"></footer>
+
+</body>
+</html>

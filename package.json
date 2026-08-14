@@ -1,0 +1,11 @@
+{
+  "name": "trueso-redesign",
+  "version": "1.0.0",
+  "description": "trueso.in full-site redesign - Heritage Ledger",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}
