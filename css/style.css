@@ -163,6 +163,11 @@ body.cursor-hovering .custom-cursor-ring {
 
 .preloader-content {
   text-align: center;
+  /* Fixed (not auto) width so the typewriter title's animated "100%"
+     resolves against a stable value instead of shrink-to-fit sizing —
+     without this, the title can end up wider than the viewport on phones. */
+  width: min(92vw, 480px);
+  padding: 0 0.5rem;
 }
 
 .preloader-seal {
@@ -182,6 +187,7 @@ body.cursor-hovering .custom-cursor-ring {
   white-space: nowrap;
   border-right: 1px solid var(--antique-gold);
   width: 0;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -204,6 +210,13 @@ body.cursor-hovering .custom-cursor-ring {
   margin-top: 1.4rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+@media (max-width: 575px) {
+  .preloader-seal { width: 90px; height: 90px; margin-bottom: 1.75rem; }
+  .preloader-title { font-size: 1.5rem; letter-spacing: 0.1em; }
+  .preloader-subtitle { font-size: 0.92rem; }
+  .preloader-tagline { font-size: 0.62rem; letter-spacing: 0.16em; margin-top: 1.1rem; }
 }
 
 /* STICKY HEADER & UTILITY BAR */
