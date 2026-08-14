@@ -1,0 +1,37 @@
+name: Update gold rate
+
+on:
+  schedule:
+    # Every 30 minutes, all day. The job only commits when trueso.in's
+    # own posted rate actually changed, so this just controls how soon
+    # a real update gets picked up — not how often the site changes.
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-rate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch current rate from trueso.in
+        run: node scripts/fetch-gold-rate.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name "trueso-rate-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git diff --quiet -- data/gold-rate.json; then
+            echo "No change in rate — skipping commit."
+          else
+            git add data/gold-rate.json
+            git commit -m "Update gold rate ($(date -u +%Y-%m-%dT%H:%M) UTC)"
+            git push
+          fi

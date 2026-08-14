@@ -214,9 +214,19 @@ body.cursor-hovering .custom-cursor-ring {
 
 @media (max-width: 575px) {
   .preloader-seal { width: 90px; height: 90px; margin-bottom: 1.75rem; }
-  .preloader-title { font-size: 1.5rem; letter-spacing: 0.1em; }
+  /* Sized with real margin (not just "fits exactly") against the
+     preloader-content box below, so the typewriter's overflow:hidden
+     never clips the name mid-word on a phone. */
+  .preloader-title { font-size: 1.35rem; letter-spacing: 0.06em; }
   .preloader-subtitle { font-size: 0.92rem; }
   .preloader-tagline { font-size: 0.62rem; letter-spacing: 0.16em; margin-top: 1.1rem; }
+}
+
+@media (max-width: 400px) {
+  .preloader-seal { width: 76px; height: 76px; margin-bottom: 1.4rem; }
+  .preloader-title { font-size: 1.05rem; letter-spacing: 0.03em; }
+  .preloader-subtitle { font-size: 0.82rem; }
+  .preloader-tagline { font-size: 0.56rem; letter-spacing: 0.12em; }
 }
 
 /* STICKY HEADER & UTILITY BAR */
